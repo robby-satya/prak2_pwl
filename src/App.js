@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import "./assets/styles.css"
 
-export default App;
+import WebScrap from "./page/scrap";
+
+export default class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state ={
+      useActivenav: "webScrap",
+    }
+  }
+
+  render() {
+    return (
+      <Router>
+        <div className="container">
+          <div className="navbar">
+            <h2>Tugas Scrapping</h2>
+          </div>
+          <div className="content">
+            <Switch>
+              <Route exact path="/" component={WebScrap} />
+            </Switch>
+          </div>
+        </div>
+      </Router>
+    )
+  }
+}
